@@ -25,9 +25,6 @@ const input = {
 // Compile the contract
 const output = JSON.parse(solc.compile(JSON.stringify(input)));
 
-// Log the output to inspect its structure
-console.log(output);
-
 // Ensure the contract is in the output
 if (output.errors) {
   console.error("Compilation errors:", output.errors);
@@ -37,6 +34,11 @@ if (output.errors) {
 // Extract ABI and Bytecode from the output
 const contract = output.contracts['Lottery.sol'].Lottery;
 
+// Log the ABI and Bytecode explicitly
+console.log("ABI:", contract.abi);
+console.log("Bytecode:", contract.evm.bytecode.object);
+
+// Export ABI and Bytecode
 module.exports = {
   interface: contract.abi,
   bytecode: contract.evm.bytecode.object
