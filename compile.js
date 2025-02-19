@@ -1,4 +1,3 @@
-// compile.js
 const path = require("path");
 const fs = require("fs");
 const solc = require("solc");
@@ -25,20 +24,15 @@ const input = {
 // Compile the contract
 const output = JSON.parse(solc.compile(JSON.stringify(input)));
 
-// Ensure the contract is in the output
-if (output.errors) {
-  console.error("Compilation errors:", output.errors);
-  return;
-}
-
-// Extract ABI and Bytecode from the output
+// Log the ABI and Bytecode separately
 const contract = output.contracts['Lottery.sol'].Lottery;
-
-// Log the ABI and Bytecode explicitly
-console.log("ABI:", contract.abi);
+console.log("ABI:", JSON.stringify(contract.abi, null, 2));
 console.log("Bytecode:", contract.evm.bytecode.object);
 
-// Export ABI and Bytecode
+// Optionally, save the output to a JSON file for further inspection
+fs.writeFileSync('compiledContract.json', JSON.stringify(output, null, 2));
+
+// Export the ABI and Bytecode for deployment
 module.exports = {
   interface: contract.abi,
   bytecode: contract.evm.bytecode.object
