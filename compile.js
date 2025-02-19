@@ -1,3 +1,4 @@
+// compile.js
 const path = require("path");
 const fs = require("fs");
 const solc = require("solc");
