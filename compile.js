@@ -20,8 +20,11 @@ const input = {
     }
   };
   
-  // Compile the contract
-  const output = JSON.parse(solc.compile(JSON.stringify(input)));
-  
-  // Export the compiled contract
-  module.exports = output.contracts['Lottery.sol'].Lottery;
+// Compile the contract
+const output = JSON.parse(solc.compile(JSON.stringify(input)));
+
+// Log the output to inspect its structure
+console.log(output);
+
+// Export the compiled contract
+module.exports = output.contracts['Lottery.sol'].Lottery;
