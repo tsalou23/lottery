@@ -23,7 +23,7 @@ contract Lottery {
         address winner = players[index];
         uint prize = address(this).balance;
         (bool success, )=payable(winner).call{value: prize}("");
-        require(succes, "Transfer failed");
+        require(success, "Transfer failed");
         players = new address[](0);
     }
     modifier restricted() {
