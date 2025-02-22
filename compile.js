@@ -34,6 +34,6 @@ fs.writeFileSync('compiledContract.json', JSON.stringify(output, null, 2));
 
 // Export the ABI and Bytecode for deployment
 module.exports = {
-  interface: contract.abi,
+  abi: contract.abi,
   bytecode: contract.evm.bytecode.object
 };
