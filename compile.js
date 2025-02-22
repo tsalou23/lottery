@@ -23,6 +23,7 @@ const input = {
 
 // Compile the contract
 const output = JSON.parse(solc.compile(JSON.stringify(input)));
+console.log("Full Compilation Output:", JSON.stringify(output, null, 2));
 
 // Log the ABI and Bytecode separately
 const contract = output.contracts['Lottery.sol'].Lottery;

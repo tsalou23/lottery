@@ -30,7 +30,7 @@ contract Lottery {
         require(msg.sender == manager,"Only manager can call this");
         _;
     }
-    function getPlayers () public view returns (address[]){
+    function getPlayers () public view returns (address[] memory){
         return players;
     }
 }
